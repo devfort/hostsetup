@@ -1,0 +1,19 @@
+$TTL	604800
+@	IN	SOA	localhost.	root.localhost.	(
+					1	; Serial
+					604800	; Refresh
+					86400	; Retry
+					2419200	; Expire
+					604800	; Negative Cache TTL
+					)
+
+@		IN	NS	10.0.0.1
+clonque		IN	A	10.0.0.1
+knockbrex	IN	A	10.0.0.2
+core1		IN	A	10.0.0.3
+core2		IN	A	10.0.0.4
+akron		IN	A	10.0.0.5
+hindenburg	IN	A	10.0.0.6
+
+core		IN	CNAME	core1
+assets		IN	CNAME	clonque
