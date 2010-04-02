@@ -8,6 +8,7 @@ $TTL	604800
 					)
 
 @		IN	NS	10.0.0.1
+@		IN	NS	10.0.0.2
 clonque		IN	A	10.0.0.1
 knockbrex	IN	A	10.0.0.2
 core1		IN	A	10.0.0.3
