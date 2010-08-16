@@ -1,4 +1,12 @@
+acl forts {
+        10.0.0.1;
+        10.0.0.2;
+};
+
 zone "fort." {
 	type master;
 	file "/etc/bind/db.fort";
+	allow-transfer {
+		forts;
+	};
 };
