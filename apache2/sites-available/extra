@@ -1,0 +1,29 @@
+<VirtualHost *:80>
+        ServerName debian.fort
+        Alias /debian "/home/debian/data/mirror/"
+        <Directory /home/debian/data/mirror/> 
+                Options +ExecCGI +FollowSymLinks +Indexes 
+                Order allow,deny 
+                allow from all 
+        </Directory> 
+</VirtualHost>
+ 
+<VirtualHost *:80>
+        ServerName ubuntu.fort
+        Alias /ubuntu "/home/ubuntu/data/mirror/archive.ubuntu.com/ubuntu/" 
+        <Directory /home/ubuntu/data/mirror/> 
+                Options +ExecCGI +FollowSymLinks +Indexes 
+                Order allow,deny 
+                allow from all 
+        </Directory> 
+</VirtualHost>
+ 
+<VirtualHost *:80>
+        ServerName assets.fort
+        Alias /assets "/home/assets/" 
+        <Directory /home/assets/> 
+                Options +ExecCGI +FollowSymLinks +Indexes 
+                Order allow,deny 
+                allow from all 
+        </Directory> 
+</VirtualHost>
