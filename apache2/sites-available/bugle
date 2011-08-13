@@ -1,0 +1,50 @@
+<VirtualHost *:80>
+        ServerName bugle.fort
+        ServerAlias twitter.com
+        ServerAlias api.twitter.com
+        ServerAlias search.twitter.com
+        ServerAlias foursquare.com
+        ServerAlias api.foursquare.com
+        WSGIPassAuthorization On
+        WSGIScriptAlias / /home/bugle/releases/current/bugle_project/configs/live/bugle.wsgi
+        ErrorLog /var/log/apache2/bugle-error.log
+        CustomLog /var/log/apache2/bugle-access.log combined
+</VirtualHost>
+
+<IfModule mod_ssl.c>
+<VirtualHost *:443>
+        ServerName bugle.fort
+        ServerAlias twitter.com
+        ServerAlias api.twitter.com
+        ServerAlias search.twitter.com
+        WSGIPassAuthorization On
+        WSGIScriptAlias / /home/bugle/releases/current/bugle_project/configs/live/bugle.wsgi
+        ErrorLog /var/log/apache2/bugle-error.log
+        CustomLog /var/log/apache2/bugle-access.log combined
+        SSLEngine on
+        # SSLCertificateFile    /etc/ssl/certs/ssl-cert-snakeoil.pem
+        # SSLCertificateKeyFile /etc/ssl/private/ssl-cert-snakeoil.key
+        SSLCertificateFile    /etc/ssl/api.twitter.com.pem
+        SSLCertificateKeyFile /etc/ssl/api.twitter.com.pem
+        BrowserMatch ".*MSIE.*" \
+                nokeepalive ssl-unclean-shutdown \
+                downgrade-1.0 force-response-1.0
+</VirtualHost>
+</IfModule>
+
+<IfModule mod_ssl.c>
+<VirtualHost *:443>
+        ServerName foursquare.com
+        ServerAlias api.foursquare.com
+        WSGIPassAuthorization On
+        WSGIScriptAlias / /home/bugle/bugle_project/bugle.wsgi
+        ErrorLog /var/log/apache2/fortsquare-error.log
+        CustomLog /var/log/apache2/fortsquare-access.log combined
+        SSLEngine on
+        SSLCertificateFile    /etc/ssl/certs/ssl-cert-foursquare.pem
+        SSLCertificateKeyFile /etc/ssl/private/ssl-cert-foursquare.key
+        BrowserMatch ".*MSIE.*" \
+                nokeepalive ssl-unclean-shutdown \
+                downgrade-1.0 force-response-1.0
+</VirtualHost>
+</IfModule>

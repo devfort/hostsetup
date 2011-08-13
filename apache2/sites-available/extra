@@ -1,14 +1,4 @@
 <VirtualHost *:80>
-        ServerName debian.fort
-        Alias /debian "/home/debian/data/mirror/"
-        <Directory /home/debian/data/mirror/> 
-                Options +ExecCGI +FollowSymLinks +Indexes 
-                Order allow,deny 
-                allow from all 
-        </Directory> 
-</VirtualHost>
- 
-<VirtualHost *:80>
         ServerName ubuntu.fort
         Alias /ubuntu "/home/ubuntu/data/mirror/archive.ubuntu.com/ubuntu/" 
         <Directory /home/ubuntu/data/mirror/> 
@@ -26,4 +16,17 @@
                 Order allow,deny 
                 allow from all 
         </Directory> 
+</VirtualHost>
+
+VirtualHost *:80>
+        ServerName pypi.fort
+        ServerAlias pypi.python.org
+        DocumentRoot /home/assets/pypi
+        Alias /simple /home/assets/pypi
+        <Directory /home/assets/pypi/>
+                Options Indexes FollowSymLinks MultiViews
+                AllowOverride None
+                Order allow,deny
+                allow from all
+        </Directory>
 </VirtualHost>

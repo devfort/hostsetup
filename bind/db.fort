@@ -18,3 +18,4 @@ core		IN	CNAME	clonque
 assets		IN	CNAME	clonque
 stage		IN	CNAME	clonque
 bugle		IN	CNAME	clonque
+pypi            IN      CNAME   clonque
